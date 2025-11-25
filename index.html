@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>INDRA KUMAR R</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+
+        <style>
+            :root {
+                --primary-color: #000;
+                --secondary-color: #fff;
+                --dark-bg: #0d0d0d;
+                --video-overlay-color: rgba(0, 0, 0, 0.6);
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: var(--secondary-color) !important;
+                font-weight: 700;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            }
+
+            a {
+                color: var(--secondary-color);
+                text-decoration: underline;
+                transition: color 0.3s;
+            }
+
+            a:hover {
+                color: #ccc;
+            }
+
+            .text-primary,
+            .text-muted,
+            .text-secondary {
+                color: var(--secondary-color) !important;
+            }
+
+            .section-padding {
+                padding: 4rem 0;
+            }
+
+            .full-viewport-section {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                text-align: center;
+                z-index: 1;
+            }
+
+            .video-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .video-container video {
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                object-fit: cover;
+                filter: grayscale(100%);
+            }
+
+            .video-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--video-overlay-color);
+                z-index: 10;
+            }
+
+            .video-container video:not([src]) + .video-overlay {
+                background: var(--dark-bg);
+            }
+
+            .section-content {
+                position: relative;
+                z-index: 20;
+                width: 100%;
+                padding: 4rem 1rem;
+            }
+
+            .buttons-section {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 32px;
+            }
+
+            .skill-card {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--secondary-color);
+                border-radius: 0.5rem;
+                padding: 1rem;
+                text-align: center;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            .skill-card:hover {
+                background-color: var(--secondary-color);
+                color: var(--primary-color);
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+                transform: translateY(-5px);
+            }
+
+            .timeline-item {
+                border-left: 3px solid var(--secondary-color);
+                padding-left: 1.5rem;
+                margin-bottom: 3rem;
+                text-align: left;
+                position: relative;
+            }
+
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -10px;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                background-color: var(--primary-color);
+                border: 3px solid var(--secondary-color);
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+            .timeline-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-bottom: 0.5rem;
+            }
+
+            .badge-skill {
+                background-color: var(--secondary-color);
+                color: var(--primary-color);
+                font-weight: normal;
+                margin-right: 0.5rem;
+                margin-top: 0.5rem;
+                display: inline-block;
+                padding: 0.4em 0.8em;
+            }
+
+            .project-card {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--secondary-color);
+                border: 1px solid rgba(255, 255, 255, 0.5) !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                text-align: left;
+            }
+
+            .project-card:hover {
+                transform: scale(1.02);
+                box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+            }
+
+            .project-card a {
+                color: #ccc;
+            }
+
+            .project-card a:hover {
+                color: var(--secondary-color);
+            }
+
+            .project-card .card-title {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            footer {
+                padding: 3rem 0;
+                text-align: center;
+                background-color: var(--dark-bg);
+                color: var(--secondary-color);
+            }
+
+            .footer-link-icon {
+                font-size: 1.8rem;
+                margin: 0 0.75rem;
+                transition: color 0.3s, transform 0.3s;
+                color: var(--secondary-color);
+            }
+
+            .footer-link-icon:hover {
+                color: #aaa;
+                transform: scale(1.1);
+            }
+
+            @media (max-width: 768px) {
+                .full-viewport-section {
+                    min-height: auto;
+                    padding-top: 5rem;
+                    padding-bottom: 5rem;
+                }
+                .timeline-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div
+            id="video-path"
+            data-src="/assets/overlay.mp4"
+            style="display: none"
+        ></div>
+
+        <section id="hero" class="full-viewport-section">
+            <div class="video-container">
+                <video
+                    id="video-hero"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src=""
+                    onerror="this.parentElement.classList.add('no-video-fallback')"
+                ></video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container section-content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h1 class="display-1 fw-bold mb-3">INDRA KUMAR R</h1>
+
+                        <p class="lead mx-auto mb-4" style="max-width: 800px">
+                            Full-stack Software Engineer with experience across
+                            <strong class="fw-bold"
+                                >Angular, Go, Node.js, Express.js and
+                                MongoDB</strong
+                            >, delivering scalable features for AI-native
+                            platforms. Skilled in frontend architecture,
+                            microservices development, third-party integrations,
+                            and optimizing engineering workflows. Committed to
+                            writing clean code and building reliable systems
+                            that solve real user and business problems.
+                        </p>
+
+                        <div class="buttons-section">
+                            <button
+                                class="skill-card mt-4"
+                                onclick="openResume()"
+                            >
+                                Resume
+                            </button>
+
+                            <button
+                                class="skill-card mt-4"
+                                onclick="openVideoResume()"
+                            >
+                                Video Resume
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="full-viewport-section">
+            <div class="video-container">
+                <video
+                    id="video-skills"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src=""
+                    onerror="this.parentElement.classList.add('no-video-fallback')"
+                ></video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container section-content">
+                <h2 class="text-center mb-5 text-uppercase">Skills</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Angular</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Go (Golang)</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Node.js</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Express.js</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">MongoDB</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">TypeScript</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">JavaScript</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">HTML & CSS</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Web Development</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">React</div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="skill-card">Redis</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="full-viewport-section">
+            <div class="video-container">
+                <video
+                    id="video-experience"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src=""
+                    onerror="this.parentElement.classList.add('no-video-fallback')"
+                ></video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container section-content">
+                <h2 class="text-center mb-5 text-uppercase">Work Experience</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="mb-0">
+                                    Software Development Engineer
+                                </h4>
+                                <span class="timeline-date"
+                                    >July 2024 - Present</span
+                                >
+                            </div>
+                            <p class="mb-2">Geektrust | Bengaluru, India</p>
+
+                            <div class="mb-3">
+                                <span class="badge rounded-pill badge-skill"
+                                    >Angular</span
+                                >
+                                <span class="badge rounded-pill badge-skill"
+                                    >Go</span
+                                >
+                                <span class="badge rounded-pill badge-skill"
+                                    >MongoDB</span
+                                >
+                            </div>
+
+                            <ul class="list-unstyled text-start mx-auto">
+                                <li>
+                                    <i class="fas fa-code-branch me-2"></i>
+                                    Built the entire frontend for a complex
+                                    admin configuration tool, transforming a
+                                    setup process into a smooth workflow,
+                                    reducing manual effort and time by 90%.
+                                </li>
+                                <li>
+                                    <i class="fas fa-code-branch me-2"></i>
+                                    Engineered and extended backend APIs,
+                                    enabling reliable communication between
+                                    frontend and microservices.
+                                </li>
+                                <li>
+                                    <i class="fas fa-code-branch me-2"></i>
+                                    Worked on event-driven architecture
+                                    components to ensure responsive, scalable
+                                    interactions across the platform.
+                                </li>
+                                <li>
+                                    <i class="fas fa-code-branch me-2"></i>
+                                    Integrated third-party tools (Google Sheets,
+                                    proctoring tools) reducing manual
+                                    operational work across teams.
+                                </li>
+                                <li>
+                                    <i class="fas fa-code-branch me-2"></i>
+
+                                    Resolved multiple critical production
+                                    issues, improving platform reliability and
+                                    user experience.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="mb-0">
+                                    Software Development Engineer Intern
+                                </h4>
+                                <span class="timeline-date"
+                                    >Nov 2023 - Jan 2024</span
+                                >
+                            </div>
+                            <p class="mb-2">
+                                ERAM Power Electronics | Bengaluru, India
+                            </p>
+
+                            <div class="mb-3">
+                                <span class="badge rounded-pill badge-skill"
+                                    >JavaScript</span
+                                >
+                                <span class="badge rounded-pill badge-skill"
+                                    >Node.js</span
+                                >
+                                <span class="badge rounded-pill badge-skill"
+                                    >Express.js</span
+                                >
+                                <span class="badge rounded-pill badge-skill"
+                                    >MySQL</span
+                                >
+                            </div>
+
+                            <ul class="list-unstyled text-start mx-auto">
+                                <li>
+                                    <i class="fas fa-desktop me-2"></i> Built a
+                                    full-stack employee management portal for
+                                    internal operations, including secure
+                                    authentication.
+                                </li>
+                                <li>
+                                    <i class="fas fa-desktop me-2"></i>
+                                    Implemented multi-level ticketing and
+                                    approval flows to streamline leave and
+                                    request handling.
+                                </li>
+                                <li>
+                                    <i class="fas fa-desktop me-2"></i>
+                                    Built an admin panel for centralized user
+                                    and department management, improving overall
+                                    operational efficiency.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="full-viewport-section">
+            <div class="video-container">
+                <video
+                    id="video-projects"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src=""
+                    onerror="this.parentElement.classList.add('no-video-fallback')"
+                ></video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container section-content">
+                <h2 class="text-center mb-5 text-uppercase">Projects</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div
+                            class="card h-100 rounded-3 shadow-sm border-0 project-card"
+                        >
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    LinkedIn Profile Scraper App
+
+                                    <a
+                                        href="https://github.com/indra-kumar-r/LinkedIn-Profile-Scraper-App"
+                                        target="_blank"
+                                        class="fw-bold project-link"
+                                    >
+                                        <i
+                                            class="fab fa-github footer-link-icon"
+                                        ></i>
+                                    </a>
+                                </h4>
+
+                                <div class="mb-3">
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Go</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Angular</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >MongoDB</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >SerpAPI</span
+                                    >
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <i class="fas fa-search me-2"></i> Built
+                                        a full-stack tool for Boolean search
+                                        queries.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-server me-2"></i> Built
+                                        a modular microservices backend with
+                                        SerpAPI integration.
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-users me-2"></i>
+                                        Developed a user-friendly UI with
+                                        multi-user accounts and exportable
+                                        results.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-5">
+                        <div
+                            class="card h-100 rounded-3 shadow-sm border-0 project-card"
+                        >
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Invoice Web App
+
+                                    <a
+                                        href="https://github.com/indra-kumar-r/Invoice-WebApp"
+                                        target="_blank"
+                                        class="fw-bold project-link"
+                                    >
+                                        <i
+                                            class="fab fa-github footer-link-icon"
+                                        ></i>
+                                    </a>
+                                </h4>
+
+                                <div class="mb-3">
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Angular</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Node.js</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Express.js</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >MongoDB</span
+                                    >
+                                    <span class="badge rounded-pill badge-skill"
+                                        >Redis</span
+                                    >
+                                </div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <i
+                                            class="fas fa-money-check-alt me-2"
+                                        ></i>
+                                        Developed a web-based invoice management
+                                        system.
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fas fa-money-check-alt me-2"
+                                        ></i>
+                                        Streamlined invoice creation with
+                                        persistent data storage.
+                                    </li>
+                                    <li>
+                                        <i
+                                            class="fas fa-money-check-alt me-2"
+                                        ></i>
+                                        Built user-friendly UI for managing
+                                        invoices and client details.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="full-viewport-section">
+            <div class="video-container">
+                <video
+                    id="video-education"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    src=""
+                    onerror="this.parentElement.classList.add('no-video-fallback')"
+                ></video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <div class="container section-content">
+                <h2 class="text-center mb-5 text-uppercase">Education</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="mb-0">
+                                    B.TECH in COMPUTER SCIENCE ENGINEERING
+                                </h4>
+                                <span class="timeline-date">2020 - 2024</span>
+                            </div>
+                            <p class="mb-0 fw-bold text-start">
+                                ALLIANCE COLLEGE OF ENGINEERING AND DESIGN
+                            </p>
+                            <p class="text-start">Bengaluru, Karnataka</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="container">
+                <h4 class="mb-4">Get In Touch</h4>
+
+                <div class="mb-4">
+                    <a
+                        href="https://www.linkedin.com/in/indra-kumar-r/"
+                        target="_blank"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="fab fa-linkedin footer-link-icon"></i>
+                    </a>
+
+                    <a
+                        href="https://github.com/indra-kumar-r"
+                        target="_blank"
+                        aria-label="GitHub"
+                    >
+                        <i class="fab fa-github footer-link-icon"></i>
+                    </a>
+                </div>
+
+                <p class="mb-1">
+                    <i class="fas fa-map-marker-alt me-2"></i> Bengaluru, India
+                </p>
+                <p class="mb-1">
+                    <i class="fas fa-phone me-2"></i> +91-6361702830
+                </p>
+
+                <p class="mt-4 small">&copy; 2025 INDRA KUMAR R.</p>
+            </div>
+        </footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const videoPath = document
+                    .getElementById('video-path')
+                    .getAttribute('data-src');
+                const videoElements = document.querySelectorAll(
+                    '.full-viewport-section video'
+                );
+
+                videoElements.forEach((video) => {
+                    video.src = videoPath;
+
+                    video.addEventListener('loadeddata', () => {
+                        video.play().catch((error) => {
+                            console.warn(
+                                `Autoplay prevented for video: ${video.id}.`
+                            );
+                        });
+                    });
+                });
+
+                console.log(`Video path set for all sections: ${videoPath}`);
+            });
+
+            openResume = () => {
+                window.open(
+                    'https://drive.google.com/file/d/1BfHWFxOJuUw6GthluoX-lRG7v5NzcAtE/view?usp=drive_link',
+                    '_blank'
+                );
+            };
+
+            openVideoResume = () => {
+                window.open(
+                    'https://drive.google.com/file/d/1QS4DNfgltGp4QS6beO1yGG-TZJInOqX2/view?usp=sharing',
+                    '_blank'
+                );
+            };
+        </script>
+    </body>
+</html>
