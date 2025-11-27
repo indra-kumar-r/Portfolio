@@ -2,7 +2,7 @@
     --primary-color: #000;
     --secondary-color: #fff;
     --dark-bg: #0d0d0d;
-    --overlay-color: rgba(0, 0, 0, 0.55);
+    --overlay-color: rgba(0, 0, 0, 0.4);
 }
 
 .full-viewport-section {
@@ -163,13 +163,6 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-footer {
-    padding: 3rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
 .footer-link-icon {
