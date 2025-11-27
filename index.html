@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>INDRA KUMAR R</title>
+
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -14,256 +15,12 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
 
-        <style>
-            :root {
-                --primary-color: #000;
-                --secondary-color: #fff;
-                --dark-bg: #0d0d0d;
-                --video-overlay-color: rgba(0, 0, 0, 0.6);
-            }
-
-            html {
-                scroll-behavior: smooth;
-            }
-
-            body {
-                font-family: 'Inter', sans-serif;
-                background-color: var(--primary-color);
-                color: var(--secondary-color);
-                line-height: 1.6;
-                overflow-x: hidden;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                color: var(--secondary-color) !important;
-                font-weight: 700;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-            }
-
-            a {
-                color: var(--secondary-color);
-                text-decoration: underline;
-                transition: color 0.3s;
-            }
-
-            a:hover {
-                color: #ccc;
-            }
-
-            .text-primary,
-            .text-muted,
-            .text-secondary {
-                color: var(--secondary-color) !important;
-            }
-
-            .section-padding {
-                padding: 4rem 0;
-            }
-
-            .full-viewport-section {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                overflow: hidden;
-                text-align: center;
-                z-index: 1;
-            }
-
-            .video-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-            }
-
-            .video-container video {
-                min-width: 100%;
-                min-height: 100%;
-                width: auto;
-                height: auto;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                object-fit: cover;
-                filter: grayscale(100%);
-            }
-
-            .video-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--video-overlay-color);
-                z-index: 10;
-            }
-
-            .video-container video:not([src]) + .video-overlay {
-                background: var(--dark-bg);
-            }
-
-            .section-content {
-                position: relative;
-                z-index: 20;
-                width: 100%;
-                padding: 4rem 1rem;
-            }
-
-            .buttons-section {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 32px;
-            }
-
-            .skill-card {
-                background-color: rgba(255, 255, 255, 0.1);
-                color: var(--secondary-color);
-                border-radius: 0.5rem;
-                padding: 1rem;
-                text-align: center;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                margin-bottom: 1rem;
-                font-weight: 600;
-            }
-
-            .skill-card:hover {
-                background-color: var(--secondary-color);
-                color: var(--primary-color);
-                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
-                transform: translateY(-5px);
-            }
-
-            .timeline-item {
-                border-left: 3px solid var(--secondary-color);
-                padding-left: 1.5rem;
-                margin-bottom: 3rem;
-                text-align: left;
-                position: relative;
-            }
-
-            .timeline-item::before {
-                content: '';
-                position: absolute;
-                left: -10px;
-                top: 0;
-                width: 18px;
-                height: 18px;
-                background-color: var(--primary-color);
-                border: 3px solid var(--secondary-color);
-                border-radius: 50%;
-                z-index: 1;
-            }
-
-            .timeline-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                margin-bottom: 0.5rem;
-            }
-
-            .badge-skill {
-                background-color: var(--secondary-color);
-                color: var(--primary-color);
-                font-weight: normal;
-                margin-right: 0.5rem;
-                margin-top: 0.5rem;
-                display: inline-block;
-                padding: 0.4em 0.8em;
-            }
-
-            .project-card {
-                background-color: rgba(255, 255, 255, 0.1);
-                color: var(--secondary-color);
-                border: 1px solid rgba(255, 255, 255, 0.5) !important;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                text-align: left;
-            }
-
-            .project-card:hover {
-                transform: scale(1.02);
-                box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-            }
-
-            .project-card a {
-                color: #ccc;
-            }
-
-            .project-card a:hover {
-                color: var(--secondary-color);
-            }
-
-            .project-card .card-title {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            footer {
-                padding: 3rem 0;
-                text-align: center;
-                background-color: var(--dark-bg);
-                color: var(--secondary-color);
-            }
-
-            .footer-link-icon {
-                font-size: 1.8rem;
-                margin: 0 0.75rem;
-                transition: color 0.3s, transform 0.3s;
-                color: var(--secondary-color);
-            }
-
-            .footer-link-icon:hover {
-                color: #aaa;
-                transform: scale(1.1);
-            }
-
-            @media (max-width: 768px) {
-                .full-viewport-section {
-                    min-height: auto;
-                    padding-top: 5rem;
-                    padding-bottom: 5rem;
-                }
-                .timeline-header {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="styles.css" />
     </head>
 
     <body>
-        <div
-            id="video-path"
-            data-src="/assets/overlay.mp4"
-            style="display: none"
-        ></div>
-
         <section id="hero" class="full-viewport-section">
-            <div class="video-container">
-                <video
-                    id="video-hero"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    src=""
-                    onerror="this.parentElement.classList.add('no-video-fallback')"
-                ></video>
-                <div class="video-overlay"></div>
-            </div>
+            <div class="section-overlay"></div>
 
             <div class="container section-content">
                 <div class="row justify-content-center">
@@ -306,18 +63,7 @@
         </section>
 
         <section id="skills" class="full-viewport-section">
-            <div class="video-container">
-                <video
-                    id="video-skills"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    src=""
-                    onerror="this.parentElement.classList.add('no-video-fallback')"
-                ></video>
-                <div class="video-overlay"></div>
-            </div>
+            <div class="section-overlay"></div>
 
             <div class="container section-content">
                 <h2 class="text-center mb-5 text-uppercase">Skills</h2>
@@ -360,18 +106,7 @@
         </section>
 
         <section id="experience" class="full-viewport-section">
-            <div class="video-container">
-                <video
-                    id="video-experience"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    src=""
-                    onerror="this.parentElement.classList.add('no-video-fallback')"
-                ></video>
-                <div class="video-overlay"></div>
-            </div>
+            <div class="section-overlay"></div>
 
             <div class="container section-content">
                 <h2 class="text-center mb-5 text-uppercase">Work Experience</h2>
@@ -491,18 +226,7 @@
         </section>
 
         <section id="projects" class="full-viewport-section">
-            <div class="video-container">
-                <video
-                    id="video-projects"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    src=""
-                    onerror="this.parentElement.classList.add('no-video-fallback')"
-                ></video>
-                <div class="video-overlay"></div>
-            </div>
+            <div class="section-overlay"></div>
 
             <div class="container section-content">
                 <h2 class="text-center mb-5 text-uppercase">Projects</h2>
@@ -629,18 +353,7 @@
         </section>
 
         <section id="education" class="full-viewport-section">
-            <div class="video-container">
-                <video
-                    id="video-education"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    src=""
-                    onerror="this.parentElement.classList.add('no-video-fallback')"
-                ></video>
-                <div class="video-overlay"></div>
-            </div>
+            <div class="section-overlay"></div>
 
             <div class="container section-content">
                 <h2 class="text-center mb-5 text-uppercase">Education</h2>
@@ -663,7 +376,9 @@
             </div>
         </section>
 
-        <footer id="contact">
+        <footer id="contact" class="full-viewport-section">
+            <div class="section-overlay"></div>
+
             <div class="container">
                 <h4 class="mb-4">Get In Touch</h4>
 
@@ -701,43 +416,6 @@
             crossorigin="anonymous"
         ></script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const videoPath = document
-                    .getElementById('video-path')
-                    .getAttribute('data-src');
-                const videoElements = document.querySelectorAll(
-                    '.full-viewport-section video'
-                );
-
-                videoElements.forEach((video) => {
-                    video.src = videoPath;
-
-                    video.addEventListener('loadeddata', () => {
-                        video.play().catch((error) => {
-                            console.warn(
-                                `Autoplay prevented for video: ${video.id}.`
-                            );
-                        });
-                    });
-                });
-
-                console.log(`Video path set for all sections: ${videoPath}`);
-            });
-
-            openResume = () => {
-                window.open(
-                    'https://drive.google.com/file/d/1BfHWFxOJuUw6GthluoX-lRG7v5NzcAtE/view?usp=drive_link',
-                    '_blank'
-                );
-            };
-
-            openVideoResume = () => {
-                window.open(
-                    'https://drive.google.com/file/d/1E5UUTtHS6AM0xForCMQbS4pLpd85MhTM/view?usp=sharing',
-                    '_blank'
-                );
-            };
-        </script>
+        <script src="scripts.js"></script>
     </body>
 </html>
