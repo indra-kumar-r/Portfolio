@@ -15,10 +15,7 @@
     overflow: hidden;
     text-align: center;
     z-index: 1;
-    background-image: url('/overlay.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    background-color: rgb(25, 25, 25);
 }
 
 .section-overlay {
@@ -77,6 +74,12 @@ a:hover {
     align-items: center;
     justify-content: center;
     gap: 32px;
+
+    button {
+        width: 120px;
+        outline: none;
+        border: none;
+    }
 }
 
 .skill-card {
@@ -173,4 +176,30 @@ a:hover {
 
 .footer-link-icon:hover {
     transform: scale(1.1);
+}
+
+.full-viewport-section {
+    background: linear-gradient(
+        120deg,
+        #ff0080,
+        #7928ca,
+        #2afadf,
+        #4facfe,
+        #43e97b,
+        #fa709a
+    );
+    background-size: 400% 400%;
+    animation: bg-gradient 18s ease-in-out infinite;
+}
+
+@keyframes bg-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
