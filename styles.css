@@ -15,7 +15,9 @@
     overflow: hidden;
     text-align: center;
     z-index: 1;
-    background-color: rgb(25, 25, 25);
+    background: linear-gradient(120deg, white, gray, white);
+    background-size: 400% 400%;
+    animation: bg-gradient 20s ease-in-out infinite;
 }
 
 .section-overlay {
@@ -179,17 +181,6 @@ a:hover {
 }
 
 .full-viewport-section {
-    background: linear-gradient(
-        120deg,
-        #ff0080,
-        #7928ca,
-        #2afadf,
-        #4facfe,
-        #43e97b,
-        #fa709a
-    );
-    background-size: 400% 400%;
-    animation: bg-gradient 18s ease-in-out infinite;
 }
 
 @keyframes bg-gradient {
